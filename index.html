@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sikkim7 Clone</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; margin: 0; padding: 0; }
+    header { background: #0b3d91; color: white; padding: 20px; text-align: center; }
+    h1 { margin: 0; font-size: 2rem; }
+    .container { padding: 20px; max-width: 900px; margin: auto; }
+    .subordinate { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .member { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 10px 0; }
+    .member:last-child { border-bottom: none; }
+    .label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sikkim7</h1>
+  </header>
+  <div class="container">
+    <div class="subordinate">
+      <h2>Subordinate Members</h2>
+      <div id="members"></div>
+    </div>
+  </div>
+
+  <script>
+    const getRandomAmount = () => (Math.random() * 10000 + 100).toFixed(2);
+    const getRandomName = () => {
+      const first = ["Amit", "Raj", "Kiran", "Ravi", "Sunil", "Neha", "Anjali", "Pooja", "Kunal", "Deepak"];
+      const last = ["Sharma", "Verma", "Patel", "Yadav", "Singh", "Jain", "Kapoor", "Mehta", "Joshi", "Chopra"];
+      return first[Math.floor(Math.random() * first.length)] + ' ' + last[Math.floor(Math.random() * last.length)];
+    }
+
+    const membersContainer = document.getElementById("members");
+    for (let i = 0; i < 35; i++) {
+      const name = getRandomName();
+      const firstDeposit = getRandomAmount();
+      const totalDeposit = (parseFloat(firstDeposit) + Math.random() * 10000).toFixed(2);
+      const deposit = getRandomAmount();
+      const div = document.createElement("div");
+      div.className = "member";
+      div.innerHTML = `
+        <div><span class="label">Name:</span> ${name}</div>
+        <div><span class="label">First Deposit:</span> $${firstDeposit}</div>
+        <div><span class="label">Total Deposit:</span> $${totalDeposit}</div>
+        <div><span class="label">Deposit:</span> $${deposit}</div>
+      `;
+      membersContainer.appendChild(div);
+    }
+  </script>
+</body>
+</html>
